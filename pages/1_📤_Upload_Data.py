@@ -20,7 +20,7 @@ Here you will upload your data to the program and use the sidebar on the lefthan
 with st.header('1. Upload your CSV data'):
     uploaded_file = st.file_uploader("Upload your input CSV file", type=["csv"])
 #     st.sidebar.markdown("""
-# [Example CSV input file](https://raw.githubusercontent.com/dataprofessor/data/master/delaney_solubility_with_descriptors.csv)
+# [Example CSV input file](https://github.com/osmandolu/Streamlit/blob/main/final_scout_not_dummy.csv)
 # """)
 
 # Pandas Profiling Report
