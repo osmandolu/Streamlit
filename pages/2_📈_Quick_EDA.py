@@ -1,4 +1,4 @@
-pip install streamlit-pandas-profiling
+!pip install streamlit-pandas-profiling
 
 
 import pandas as pd
