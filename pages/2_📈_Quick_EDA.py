@@ -5,7 +5,7 @@ from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 
 
-df = st.session_state['df']
+df = pd.read_csv("https://github.com/osmandolu/Streamlit/blob/main/final_scout_not_dummy.csv")
 pr = ProfileReport(df, explorative=True)
 # st.header('DataFrame Header')
 # st.write(df)
