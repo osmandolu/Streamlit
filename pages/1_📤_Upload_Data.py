@@ -70,13 +70,10 @@ else:
     if st.button('Press to use Example Dataset'):
         # Example data
         @st.cache
-        def load_data():
-            a = pd.DataFrame(
-                np.random.rand(100, 5),
-                columns=['a', 'b', 'c', 'd', 'e']
-            )
-            return a
-        df = load_data()
+        def load_csv():
+            csv = pd.read_csv("final_scout_not_dummy.csv")
+            return csv
+        df = load_csv()
         st.session_state['df'] = df
         pr = ProfileReport(df, explorative=True)
 
