@@ -9,7 +9,7 @@ from streamlit_pandas_profiling import st_profile_report
 st.markdown('''
 # 🚀 Data Uploader
 
-Here you will upload your data to the program and use the sidebar on the lefthand side to navigate. This app is created in Streamlit using various libraries such as **pandas-profiling** for quick EDA and **PyCarret** for ML automation.
+Here you will upload your data to the program and use the sidebar on the lefthand side to navigate.
 
 **Connect with me:** [Osman Dolu, Ph.D.](linkedin.com/in/odolu) 
 
@@ -17,76 +17,60 @@ Here you will upload your data to the program and use the sidebar on the lefthan
 ''')
 
 # Upload CSV data
-with st.header('1. Upload your CSV data'):
-    uploaded_file = st.file_uploader("Upload your input CSV file", type=["csv"])
-#     st.sidebar.markdown("""
-# [Example CSV input file](https://github.com/osmandolu/Streamlit/blob/main/final_scout_not_dummy.csv)
-# """)
+#importing required libraries
 
-# Pandas Profiling Report
-if uploaded_file is not None:
-    @st.cache
-    def load_csv():
-        csv = pd.read_csv(uploaded_file)
-        return csv
-    df = load_csv()
-    st.session_state['df'] = df
-    pr = ProfileReport(df, explorative=True)
-    if "df" not in st.session_state: # we are transferring dataframe to other pages with this.
-        st.session_state['df'] = df   # we are transferring dataframe to other pages with this.
+import streamlit as st
 
-    # st.subheader('Dataframe:')
-    n, m = df.shape
-    st.write(f'<p style="font-size:100%">DataFrame contains {n} rows and {m} columns.</p>', unsafe_allow_html=True)   
+from io import StringIO 
 
-    if 'number_of_rows' not in st.session_state:
-        st.session_state["number_of_rows"] = 5
-        st.session_state['type'] = 'Categorical'
 
-    data_container = st.container()
 
-    with data_container:
-        a,b = st.columns(2)
-        with a:
-            increment = st.button("Show more columns ⬆️")
-            if increment:
-                st.session_state.number_of_rows +=1
-        with b:
-            decrement = st.button("Show fewer columns ⬇️")
-            if decrement:
-                st.session_state.number_of_rows -=1
+#adding a file uploader
 
-    st.table(df.head(st.session_state["number_of_rows"]))
+file = st.file_uploader("Please choose a file")
 
-    st.write(f'<p style="font-size:100%">You have successully uploaded your data. Now, you can continue with data cleaning stage.</p>', unsafe_allow_html=True)
+if file is not None:
 
-    # st.write('**DataFrame Head**')
-    # st.write(df)
-    # st.write('---')
-    # st.header('**Pandas Profiling Report**')
-    # st_profile_report(pr)
-else:
-    st.info('Awaiting for CSV file to be uploaded.')
-    if st.button('Press to use Example Dataset'):
-        # Example data
-        @st.cache
-        def load_csv():
-            csv = pd.read_csv("final_scout_not_dummy.csv")
-            return csv
-        df = load_csv()
-        st.session_state['df'] = df
-        pr = ProfileReport(df, explorative=True)
+    #To read file as bytes:
 
-        if "df" not in st.session_state: # we are transferring dataframe to other pages with this.
-            st.session_state['df'] = df   # we are transferring dataframe to other pages with this.
+    bytes_data = file.getvalue()
 
-            # st.subheader('Dataframe:')
-            n, m = df.shape
-            st.write(f'<p style="font-size:130%">DataFrame contains {n} rows and {m} columns.</p>', unsafe_allow_html=True)   
+    st.write(bytes_data)
 
-        st.header('**DataFrame Head**')
-        st.write(df)
-        # st.write('---')
-        # st.header('**Pandas Profiling Report**')
-        # st_profile_report(pr)
 
+
+    #To convert to a string based IO:
+
+    stringio = StringIO(file.getvalue().decode("utf-8"))
+
+    st.write(stringio)
+
+
+
+    #To read file as string:
+
+    string_data = stringio.read()
+
+    st.write(string_data)
+
+
+
+    #Can be used wherever a "file-like" object is accepted:
+
+    df= pd.read_csv(file)
+
+    st.write(df)
+
+
+
+#adding a file uploader to accept multiple CSV files
+
+uploaded_files = st.file_uploader("Please choose a CSV file", accept_multiple_files=True)
+
+for file in uploaded_files:
+
+    bytes_data = file.read()
+
+    st.write("File uploaded:", file.name)
+
+    st.write(bytes_data)
