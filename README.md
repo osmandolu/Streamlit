@@ -4,4 +4,4 @@ This is a sample Streamlit to show how the outputs of EDA (exploratory data anal
 
 I hope you like it and it will be helpful for your projects. 
 
-Osman Dolu
+Osman Dolu, Ph.D.
