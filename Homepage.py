@@ -13,7 +13,7 @@ st.title("No-Code Statistics & Machine Learning with Dr.Dolu!")
 "Hello visitor!" 
 "Welcome to my No-Code Machine Learning page!" 
 "My name is Osman Dolu. I am a data scientist with 10+ years of experience in this field."
-"With this web app, In this project, you will see a brief presentation of exploratory data analysis and car price prediction using AutoScout data scraped from the Europe's famous car sale website. I have used Streamlit and Python's Numpy and Pandas libraries and major machine learning algorithms to realize this project. It's just a sample and in this respect, it should be noted as a showcase example for what can be done using Streamlit's powerful environment."
+"With this web app, you will see a brief presentation of exploratory data analysis and car price prediction using AutoScout data scraped from the Europe's famous car sale website. I have used Streamlit and Python's Numpy and Pandas libraries and major machine learning algorithms to realize this project. It's just a sample and in this respect, it should be noted as a showcase example for what can be done using Streamlit's powerful environment."
 "I hope you will like it. You can navigate the analysis pages using the sidebar on the left hand side."
 
 "Best regards,"
