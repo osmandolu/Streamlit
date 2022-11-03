@@ -1,25 +1,25 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
 from PIL import Image
 
 st.set_page_config(
-    page_title="Car Price Prediction App",
+    page_title="No-Code Machine Learning",
     page_icon=":car:",
 )
 
 
-st.title("AutoScout Car Price Prediction Project")
-st.sidebar.success("Please select a page to navigate")
+st.title("No-Code Statistics & Machine Learning with Dr.Dolu!")
 
 
 "Hello visitor!" 
-
-"My name is Osman and I am a data scientist. In this project, you willsee a brief presentation of exploratory data analysis and car price prediction using AutoScout data. I have used Streamlit and Python to realize this project."
-
+"Welcome to my No-Code Machine Learning page!" 
+"My name is Osman Dolu. I am a data scientist with 10+ years of experience in this field."
+"With this web app, In this project, you will see a brief presentation of exploratory data analysis and car price prediction using AutoScout data scraped from the Europe's famous car sale website. I have used Streamlit and Python's Numpy and Pandas libraries and major machine learning algorithms to realize this project. It's just a sample and in this respect, it should be noted as a showcase example for what can be done using Streamlit's powerful environment."
 "I hope you will like it. You can navigate the analysis pages using the sidebar on the left hand side."
 
-"**Osman Dolu, Ph.D.**"
+"Best regards,"
+
+"Osman Dolu, Ph.D."
+
 
 
 
@@ -43,3 +43,29 @@ right: 2rem;
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
+
+
+def navbar_component():
+    with open("assets/images/settings.png", "rb") as image_file:
+        image_as_base64 = base64.b64encode(image_file.read())
+
+    navbar_items = ''
+    for key, value in NAVBAR_PATHS.items():
+        navbar_items += (f'<a class="navitem" href="/?nav={value}">{key}</a>')
+
+    settings_items = ''
+    for key, value in SETTINGS.items():
+        settings_items += (
+            f'<a href="/?nav={value}" class="settingsNav">{key}</a>')
+
+    component = rf'''
+            ....
+    '''
+    st.markdown(component, unsafe_allow_html=True)
+    
+    js = '''
+    <script>
+    ....
+    </script>
+    '''
+    html(js)
